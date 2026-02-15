@@ -1,3 +1,3 @@
-FROM delitescere/7z
+FROM ubuntu:24.04
 
-RUN 7z --help
+RUN apt-get install -y p7zip-full
