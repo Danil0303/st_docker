@@ -1,3 +1,3 @@
-FROM delitescere/7z AS p7zip-source
+FROM delitescere/7z
 
 RUN 7z --help
