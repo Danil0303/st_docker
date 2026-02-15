@@ -1,11 +1,11 @@
-FROM delitescere/7z AS p7zip-source
-
-# Этап 2: Ваша рабочая Ubuntu
 FROM ubuntu:24.04
 
-# Копируем исполняемые файлы и библиотеки 7z
-COPY --from=p7zip-source /usr/bin/7z /usr/bin/7z
-COPY --from=p7zip-source /usr/lib/p7zip /usr/lib/p7zip
+# Скачиваем архив и распаковываем его
+RUN mkdir -p /tmp/download && \\
+    cd /tmp/download && \\
+    curl -LJO "https://downloads.sourceforge.net/project/p7zip/p7zip/16.02/p7zip_16.02_src_all.tar.bz2" && \\
+    tar xfJ p7zip_16.02_src_all.tar.bz2 && \\
+    cd p7zip_16.02 && make && make install
 
-# Пример проверки
+# Проверка установки
 RUN 7z --help
