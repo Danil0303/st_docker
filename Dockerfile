@@ -1,4 +1,4 @@
-FROM python:3.11-slim-bullseye
+FROM debian:buster-slim
 
 
 # Устанавливаем 7-Zip из backports
